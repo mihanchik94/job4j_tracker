@@ -31,7 +31,7 @@ public class Tracker {
         int position = 0;
         for (int index = 0; index < size; index++) {
             if (items[index].getName().equals(key)) {
-                items[index] = itemsByName[position];
+                itemsByName[position] = items[index];
                 position++;
             }
         }
