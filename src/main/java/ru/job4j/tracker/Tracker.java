@@ -42,7 +42,7 @@ public class Tracker {
     private int indexOf(String id) {
         int rsl = -1;
         for (int index = 0; index < size; index++) {
-            if (items[index].getId() == id) {
+            if (items[index].getId().equals(id)) {
                 rsl = index;
                 break;
             }
@@ -61,8 +61,10 @@ public class Tracker {
     // метод замены заявки
     public boolean replace(String id, Item item) {
         int index = indexOf(id);
-        item.setId(id);
-        items[index] = item;
+        if (index != -1) {
+            item.setId(items[index].getId());
+            items[index] = item;
+        }
         return true;
     }
 }
