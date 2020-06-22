@@ -60,17 +60,29 @@ public class Tracker {
 
     // метод замены заявки
     public boolean replace(String id, Item item) {
+        boolean result = false;
         int index = indexOf(id);
         if (index != -1) {
             item.setId(items[index].getId());
             items[index] = item;
+            result = true;
         }
-        return true;
+        return result;
     }
 
     // метод удаления заявки
     public boolean delete(String id) {
-        items[indexOf(id)] = null;
-        return true;
+        boolean result = false;
+        int index = indexOf(id);
+        int start = index + 1;
+        int distPos = index;
+        int sizeAr = size - index;
+        if (index != -1) {
+            System.arraycopy(items, start, items, distPos, sizeAr);
+            items[size - 1] = null;
+            size--;
+            result = true;
+        }
+        return result;
     }
 }
