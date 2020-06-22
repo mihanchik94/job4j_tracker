@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 
 import java.util.Objects;
+import java.util.StringJoiner;
 
 public class Item {
     private String id;
@@ -24,5 +25,12 @@ public class Item {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", Item.class.getSimpleName() + "[", "]")
+                .add("id='" + id + "'")
+                .add("name=" + name + "'").toString();
     }
 }

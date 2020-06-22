@@ -8,6 +8,11 @@ public class Tracker {
     private int size = 0;
 
 
+    // присвоение номеров (id) заявок
+    private String generateId() {
+        return String.valueOf(ids++);
+    }
+
     // Добавление заявок
     public Item add(Item item) {
         item.setId(generateId());
@@ -22,9 +27,9 @@ public class Tracker {
         for (int index = 0; index < size; index++) {
             Item item = itemsWithoutNull[index];
             if (item != null) {
-              itemsWithoutNull[position] = item;
-              position++;
-           }
+                itemsWithoutNull[position] = item;
+                position++;
+            }
         }
         return Arrays.copyOf(itemsWithoutNull, position);
     }
@@ -36,29 +41,37 @@ public class Tracker {
         for (int index = 0; index < size; index++) {
             if (items[index].getName().equals(key)) {
                 items[index] = itemsByName[position];
-                position ++;
+                position++;
             }
         }
         return Arrays.copyOf(itemsByName, position);
     }
 
-
-
-    // Получение заявки по id
-    public Item findById(String id) {
-        Item rsl = null;
+    // получение индекса по id
+    private int indexOf(String id) {
+        int rsl = -1;
         for (int index = 0; index < size; index++) {
-            Item item = items[index];
-            if (item.getId().equals(id)) {
-                rsl = item;
+            if (items[index].getId() == id) {
+                rsl = index;
                 break;
             }
         }
         return rsl;
     }
 
-    private String generateId() {
-        return String.valueOf(ids++);
+    // Получение заявки по id
+    public Item findById(String id) {
+        /* Находим индекс */
+        int index = indexOf(id);
+        /* Если индекс найден возвращаем item, иначе null */
+        return index != -1 ? items[index] : null;
     }
 
+    // метод замены заявки
+    public boolean replace(String id, Item item) {
+        int index = indexOf(id);
+        item.setId(id);
+        items[index] = item;
+        return true;
+    }
 }
