@@ -67,4 +67,10 @@ public class Tracker {
         }
         return true;
     }
+
+    // метод удаления заявки
+    public boolean delete(String id) {
+        items[indexOf(id)] = null;
+        return true;
+    }
 }
