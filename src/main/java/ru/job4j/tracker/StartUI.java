@@ -6,6 +6,6 @@ public class StartUI {
         Tracker tr = new Tracker();
         tr.add(item);
         System.out.println(tr.findById(item.getId()));
-        System.out.println(tr.findById("'1'"));
+        System.out.println(tr.findById("1"));
     }
 }
