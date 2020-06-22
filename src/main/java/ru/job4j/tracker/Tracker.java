@@ -22,16 +22,7 @@ public class Tracker {
 
     // Получение списка всех заявок
     public Item[] findAll() {
-        Item[] itemsWithoutNull = new Item[items.length];
-        int position = 0;
-        for (int index = 0; index < size; index++) {
-            Item item = itemsWithoutNull[index];
-            if (item != null) {
-                itemsWithoutNull[position] = item;
-                position++;
-            }
-        }
-        return Arrays.copyOf(itemsWithoutNull, position);
+        return Arrays.copyOf(items, size);
     }
 
     // Получение списка заявок по имени
