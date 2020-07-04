@@ -30,7 +30,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("Replaced item"));
         String replacedName = "New item name";
-        Input in = new StubInput(new String[]{"0", item.getId(), "1"});
+        Input in = new StubInput(new String[]{"0", item.getId(), replacedName, "1"});
         UserAction[] actions = {
                 new EditAction(out),
                 new Exit(out)
@@ -50,7 +50,7 @@ public class StartUITest {
                 new Exit(out)
         };
         new StartUI(out).init(in, tracker, actions);
-        assertThat(tracker.findById(item.getId()).getName(), is(nullValue()));
+        assertThat(tracker.findById(item.getId()), is(nullValue()));
     }
 
     @Test
