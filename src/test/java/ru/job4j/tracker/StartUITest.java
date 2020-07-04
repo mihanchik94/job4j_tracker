@@ -8,7 +8,6 @@ import org.junit.Test;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertThat;
-import static sun.jvm.hotspot.runtime.VMOps.Exit;
 
 
 public class StartUITest {
@@ -17,7 +16,8 @@ public class StartUITest {
     public void whenAddItem() {
         Input in = new StubInput(new String[]{"0", "Item name", "1"});
         Tracker tracker = new Tracker();
-        UserAction[] actions = {new CreateAction(), new Exit()
+        UserAction[] actions = {new CreateAction(),
+                new Exit()
         };
         new StartUI().init(in, tracker, actions);
         assertThat(tracker.findAll()[0].getName(), is("Item name"));
@@ -34,7 +34,7 @@ public class StartUITest {
                 new Exit()
         };
         new StartUI().init(in, tracker, actions);
-        assertThat(tracker.findById(item.getId()), is(replacedName));
+        assertThat(tracker.findById(item.getId()).getName(), is(replacedName));
     }
 
     @Test
