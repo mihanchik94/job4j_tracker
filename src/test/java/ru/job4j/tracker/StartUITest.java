@@ -54,6 +54,67 @@ public class StartUITest {
     }
 
     @Test
+    public void testFindAllItems() {
+        Output output = new StubOutput();
+        Tracker tracker = new Tracker();
+        Input in = new StubInput(new String[]{"0", "1"});
+        UserAction[] actions = {
+            new ShowAction(output),
+            new Exit(output)
+        };
+        new StartUI(output).init(in, tracker, actions);
+        assertThat(output.toString(), is("Menu." + System.lineSeparator() +
+                "=== Show all items ====" +
+                System.lineSeparator() +
+                "Заявки отсутствуют" +
+                System.lineSeparator() +
+                "Menu." +
+                System.lineSeparator() +
+                " Exit" +
+                System.lineSeparator()));
+    }
+
+    @Test
+    public void testFindByName() {
+        Output out = new StubOutput();
+        Tracker tracker = new Tracker();
+        String name = "Name";
+        Input in = new StubInput(new String[]{"0", name, "1"});
+        Item item = tracker.add(new Item(name));
+        UserAction[] actions = {
+           new ByNameAction(out),
+           new Exit(out)
+        };
+        new StartUI(out).init(in, tracker, actions);
+        assertThat(out.toString(), is("Menu." + System.lineSeparator()
+                + "=== Find items by name ====" + System.lineSeparator()
+                + "ID заявки: " + item.getId() + "Имя заявки: " + item.getName() + System.lineSeparator()
+                + "Menu." + System.lineSeparator()
+                + " Exit" + System.lineSeparator()));
+
+    }
+
+    @Test
+    public void testFindByItem() {
+        Output out = new StubOutput();
+        Tracker tracker = new Tracker();
+        String name = "Name";
+        Item item = tracker.add(new Item(name));
+        Input in = new StubInput(new String[]{"0", item.getId(), "1"});
+        UserAction[] actions = {
+                new ByIdAction(out),
+                new Exit(out)
+        };
+        new StartUI(out).init(in, tracker, actions);
+        assertThat(out.toString(), is("Menu." + System.lineSeparator()
+        + "=== Find item by Id ====" + System.lineSeparator()
+        + " ID заявки: " + item.getId() + " Имя заявки: " + item.getName() + System.lineSeparator()
+        + "Menu." + System.lineSeparator()
+        + " Exit" + System.lineSeparator()));
+    }
+
+
+    @Test
     public void whenExit() {
         Input input = new ConsoleInput();
         Output out = new ConsoleOutput();
