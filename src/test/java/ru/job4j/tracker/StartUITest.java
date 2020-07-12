@@ -125,4 +125,35 @@ public class StartUITest {
                 "Menu." + System.lineSeparator() +
                         "0. Exit" + System.lineSeparator()));
     }
+
+    @Test
+    public void whenInvalidExit() {
+        Output out = new StubOutput();
+        Input in = new StubInput(
+                new String[] { "1" , "0"}
+        );
+        Tracker tracker = new Tracker();
+        UserAction[] action = {
+                new Exit(out)
+        };
+        new StartUI(out).init(in, tracker,action);
+        assertThat(out.toString(), is(
+                String.format(
+                        "Menu.%n"
+                                + "Wrong input, you can select: 0 .. 0%n"
+                                + "Menu.%n"
+                                + " Exit%n")));
+    }
+
+    @Test(expected = NumberFormatException.class)
+    public void whenInvalidStrExit() {
+        Output out = new StubOutput();
+        Input in = new StubInput(
+                new String[] {"ggg", "0"});
+        Tracker tracker = new Tracker();
+        UserAction[] actions = {
+                new Exit(out)
+        };
+        new StartUI(out).init(in, tracker, actions);
+    }
 }
