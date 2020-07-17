@@ -23,15 +23,19 @@ public class ValidateInputTest {
                                 + " Exit%n")));
     }
 
-    @Test(expected = NumberFormatException.class)
+    @Test
     public void whenInvalidStrExit() {
         Output out = new StubOutput();
-        Input in = new StubInput(
-                new String[] {"ggg", "0"});
+        Input in = new ValidateInput(new StubInput(new String[] {"ggg", "0"}), out);
         Tracker tracker = new Tracker();
         UserAction[] actions = {
                 new Exit(out)
         };
         new StartUI(out).init(in, tracker, actions);
+        assertThat(out.toString(), is(
+                String.format(
+                        "Menu.%n"
+                                + "Please enter validate data again.%n"
+                                + " Exit%n")));
     }
 }
