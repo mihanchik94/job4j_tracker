@@ -1,6 +1,9 @@
 package ru.job4j.tracker;
 
 import org.junit.Test;
+
+import java.util.ArrayList;
+
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.Matchers.is;
 
@@ -12,9 +15,8 @@ public class ValidateInputTest {
         Output out = new StubOutput();
         ValidateInput in = new ValidateInput(new StubInput(new String[] { "1" , "0"}), out);
         Tracker tracker = new Tracker();
-        UserAction[] action = {
-                new Exit(out)
-        };
+        ArrayList<UserAction> action = new ArrayList<>();
+               action.add(new Exit(out));
         new StartUI(out).init(in, tracker,action);
         assertThat(out.toString(), is(
                 String.format(
@@ -28,9 +30,8 @@ public class ValidateInputTest {
         Output out = new StubOutput();
         Input in = new ValidateInput(new StubInput(new String[] {"ggg", "0"}), out);
         Tracker tracker = new Tracker();
-        UserAction[] actions = {
-                new Exit(out)
-        };
+        ArrayList<UserAction> actions = new ArrayList<>();
+               actions.add(new Exit(out));
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is(
                 String.format(
