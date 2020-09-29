@@ -15,7 +15,7 @@ public class EditAction implements UserAction {
     @Override
     public boolean execute(Input input, Tracker tracker) {
         output.println("=== Edit item ====");
-        String id = input.askStr("Введите ID заявки, которую вы хотите отредактировать");
+        int id = input.askInt("Введите ID заявки, которую вы хотите отредактировать");
         String name = input.askStr("Введите новое имя заявки");
         Item item = new Item(name);
         if (tracker.replace(id, item)) {

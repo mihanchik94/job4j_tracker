@@ -11,8 +11,8 @@ public class Tracker {
 
 
     // присвоение номеров (id) заявок
-    private String generateId() {
-        return String.valueOf(ids++);
+    private int generateId() {
+        return ids++;
     }
 
     // Добавление заявок
@@ -38,10 +38,10 @@ public class Tracker {
     }
 
     // получение индекса по id
-    private int indexOf(String id) {
+    private int indexOf(int id) {
         int rsl = -1;
         for (int index = 0; index < items.size(); index++) {
-            if (items.get(index).getId().equals(id)) {
+            if (items.get(index).getId() == id) {
                 rsl = index;
                 break;
             }
@@ -50,7 +50,7 @@ public class Tracker {
     }
 
     // Получение заявки по id
-    public Item findById(String id) {
+    public Item findById(int id) {
         /* Находим индекс */
         int index = indexOf(id);
         /* Если индекс найден возвращаем item, иначе null */
@@ -58,7 +58,7 @@ public class Tracker {
     }
 
     // метод замены заявки
-    public boolean replace(String id, Item item) {
+    public boolean replace(int id, Item item) {
         int index = indexOf(id);
         if (index == -1) {
             return false;
@@ -69,7 +69,7 @@ public class Tracker {
     }
 
     // метод удаления заявки
-    public boolean delete(String id) {
+    public boolean delete(int id) {
         boolean rsl = false;
         int index = indexOf(id);
         if (index != -1) {

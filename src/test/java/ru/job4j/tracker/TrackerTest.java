@@ -22,7 +22,7 @@ public class TrackerTest {
         Item bug = new Item("Bug");
         bug.setName("Bug");
         tracker.add(bug);
-        String id = bug.getId();
+        int id = bug.getId();
         Item bugWithDesc = new Item("Bug with description");
         bugWithDesc.setName("Bug with description");
         tracker.replace(id, bugWithDesc);
@@ -35,7 +35,7 @@ public class TrackerTest {
         Item bug = new Item("Bug");
         bug.setName("Bug");
         tracker.add(bug);
-        String id = bug.getId();
+        int id = bug.getId();
         tracker.delete(id);
         assertThat(tracker.findById(id), is(nullValue()));
     }
