@@ -3,11 +3,12 @@ package ru.job4j.tracker;
 import java.util.Objects;
 import java.util.StringJoiner;
 
-public class Item {
+public class Item implements Comparable<Item> {
     private int id;
     private String name;
 
-    public Item(String name) {
+    public Item(int id, String name) {
+        this.id = id;
         this.name = name;
     }
 
@@ -32,5 +33,10 @@ public class Item {
         return new StringJoiner(", ", Item.class.getSimpleName() + "[", "]")
                 .add("id='" + id + "'")
                 .add("name=" + name + "'").toString();
+    }
+
+    @Override
+    public int compareTo(Item another) {
+        return Integer.compare(id, another.id);
     }
 }

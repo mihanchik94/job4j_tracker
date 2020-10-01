@@ -11,13 +11,12 @@ public class Tracker {
 
 
     // присвоение номеров (id) заявок
-    private int generateId() {
+    /*private int generateId() {
         return ids++;
-    }
+    }*/
 
     // Добавление заявок
     public Item add(Item item) {
-        item.setId(generateId());
         items.add(item);
         return item;
     }

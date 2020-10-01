@@ -17,7 +17,7 @@ public class EditAction implements UserAction {
         output.println("=== Edit item ====");
         int id = input.askInt("Введите ID заявки, которую вы хотите отредактировать");
         String name = input.askStr("Введите новое имя заявки");
-        Item item = new Item(name);
+        Item item = new Item(id, name);
         if (tracker.replace(id, item)) {
             output.println("Заявка успешно отредактирована");
         } else
