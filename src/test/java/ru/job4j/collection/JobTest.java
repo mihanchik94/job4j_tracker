@@ -77,8 +77,8 @@ public class JobTest {
     public void whenComparatorByNameLnAndPriorityAndNamesIsTheSame() {
         Comparator<Job> cmpNamePriority = new SortJobByNameLn().thenComparing(new SortByPriorityJob());
         int rsl = cmpNamePriority.compare(
-                new Job("Teacher", 3),
-                new Job("Teacher", 1)
+                new Job("Impl task", 3),
+                new Job("Impl task", 1)
         );
         assertThat(rsl, greaterThan(0));
     }
