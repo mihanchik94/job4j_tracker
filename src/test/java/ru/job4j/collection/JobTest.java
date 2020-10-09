@@ -73,4 +73,14 @@ public class JobTest {
         assertThat(rsl, greaterThan(0));
     }
 
+    @Test
+    public void whenComparatorByNameLnAndPriorityAndNamesIsTheSame() {
+        Comparator<Job> cmpNamePriority = new SortJobByNameLn().thenComparing(new SortByPriorityJob());
+        int rsl = cmpNamePriority.compare(
+                new Job("Teacher", 3),
+                new Job("Teacher", 1)
+        );
+        assertThat(rsl, greaterThan(0));
+    }
+
 }
