@@ -9,7 +9,7 @@ public class StringCompare implements Comparator<String> {
             char first = left.charAt(chr);
             char second = right.charAt(chr);
             if (first != second) {
-                return first-second;
+                return Character.compare(first, second);
             }
         }
         return left.length()-right.length();
