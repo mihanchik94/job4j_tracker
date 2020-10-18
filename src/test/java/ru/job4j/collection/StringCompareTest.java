@@ -36,7 +36,7 @@ public class StringCompareTest {
         assertThat(rsl, greaterThan(0));
     }
     @Test
-    public void secondCharOfLeftGreaterThanRightIsPositive(){
+    public void secondCharOfLeftGreaterThanRightIsPositive() {
         StringCompare compare = new StringCompare();
         int rst = compare.compare(
                 "Petrov",
@@ -46,7 +46,7 @@ public class StringCompareTest {
     }
 
     @Test
-    public void secondCharOfLeftLessThanRightIsNegative(){
+    public void secondCharOfLeftLessThanRightIsNegative() {
         StringCompare compare = new StringCompare();
         int rst = compare.compare(
                 "Patrova",

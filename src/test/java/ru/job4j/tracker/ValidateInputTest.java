@@ -13,11 +13,11 @@ public class ValidateInputTest {
     @Test
     public void whenInvalidExit() {
         Output out = new StubOutput();
-        ValidateInput in = new ValidateInput(new StubInput(new String[] { "1" , "0"}), out);
+        ValidateInput in = new ValidateInput(new StubInput(new String[]{"1", "0"}), out);
         Tracker tracker = new Tracker();
         ArrayList<UserAction> action = new ArrayList<>();
                action.add(new Exit(out));
-        new StartUI(out).init(in, tracker,action);
+        new StartUI(out).init(in, tracker, action);
         assertThat(out.toString(), is(
                 String.format(
                         "Menu.%n"

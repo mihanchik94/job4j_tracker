@@ -22,8 +22,12 @@ public class User implements Comparable<User> {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != getClass()) return false;
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != getClass()) {
+            return false;
+        }
         User user = (User) obj;
         return age == user.age && Objects.equals(name, user.name);
     }

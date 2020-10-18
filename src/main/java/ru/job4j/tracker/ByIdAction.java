@@ -5,7 +5,7 @@ import com.sun.source.tree.IfTree;
 public class ByIdAction implements UserAction {
     private final Output output;
 
-    public ByIdAction(Output output){
+    public ByIdAction(Output output) {
         this.output = output;
     }
 
@@ -21,8 +21,9 @@ public class ByIdAction implements UserAction {
         Item item = tracker.findById(byId);
         if (item != null) {
             output.println(" ID заявки: " + item.getId() + " Имя заявки: " + item.getName());
-        } else
+        } else {
             output.println("Указанный номер ID не найден");
+        }
         return true;
     }
 }

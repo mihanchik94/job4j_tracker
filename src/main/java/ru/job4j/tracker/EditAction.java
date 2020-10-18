@@ -3,7 +3,7 @@ package ru.job4j.tracker;
 public class EditAction implements UserAction {
     private final Output output;
 
-    public EditAction(Output output){
+    public EditAction(Output output) {
         this.output = output;
     }
 
@@ -20,8 +20,9 @@ public class EditAction implements UserAction {
         Item item = new Item(id, name);
         if (tracker.replace(id, item)) {
             output.println("Заявка успешно отредактирована");
-        } else
+        } else {
             output.println("Указанный ID не найден");
+        }
         return true;
     }
 }

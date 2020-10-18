@@ -31,7 +31,8 @@ public class Tracker {
         List<Item> itemsByName = new ArrayList<>();
         for (Item item : items) {
             if (item.getName().equals(key)) {
-                itemsByName.add(item);}
+                itemsByName.add(item);
+            }
         }
         return itemsByName;
     }

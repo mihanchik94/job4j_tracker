@@ -5,7 +5,7 @@ import java.util.List;
 public class ByNameAction implements UserAction {
     private final Output output;
 
-    public ByNameAction(Output output){
+    public ByNameAction(Output output) {
         this.output = output;
     }
 
@@ -21,10 +21,11 @@ public class ByNameAction implements UserAction {
         List<Item> items = tracker.findByName(byName);
         if (items.size() == 0) {
             output.println("Заявки не найдены");
-        } else
+        } else {
             for (Item item : items) {
                 output.println("ID заявки: " + item.getId() + "Имя заявки: " + item.getName());
             }
+        }
         return true;
     }
 }

@@ -2,9 +2,9 @@ package ru.job4j.tracker;
 
 public class StubInput implements Input {
     private String[] answers;
-    private int position =0;
+    private int position = 0;
 
-    public StubInput(String[] answers){
+    public StubInput(String[] answers) {
         this.answers = answers;
     }
 
@@ -24,7 +24,7 @@ public class StubInput implements Input {
         if (select >= 0 && select < max) {
             return select;
         } else {
-            throw new IllegalStateException(String.format("Wrong input, you can select: 0 .. ", + select + max));
+            throw new IllegalStateException(String.format("Wrong input, you can select: 0 .. ", +select + max));
         }
     }
     }

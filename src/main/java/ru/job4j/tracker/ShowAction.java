@@ -21,12 +21,13 @@ public class ShowAction implements UserAction {
         List<Item> all = tracker.findAll();
         if (all.size() == 0) {
             output.println("Заявки отсутствуют");
-        } else
+        } else {
             for (Item item : all) {
                 if (item != null) {
                     output.println("ID заявки: " + item.getId() + "Имя заявки: " + item.getName());
                 }
             }
+        }
         return true;
     }
 }
