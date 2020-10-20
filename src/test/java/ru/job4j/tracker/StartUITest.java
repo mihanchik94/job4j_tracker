@@ -2,8 +2,6 @@ package ru.job4j.tracker;
 
 import org.junit.Test;
 
-
-import javax.naming.NamingEnumeration;
 import java.util.ArrayList;
 
 import static org.hamcrest.Matchers.is;
@@ -114,15 +112,15 @@ public class StartUITest {
 
     @Test
     public void whenExit() {
-        Input input = new ConsoleInput();
-        Output out = new ConsoleOutput();
+        Input input = new StubInput((new String[]{"0"}));
+        Output out = new StubOutput();
         Tracker tracker = new Tracker();
         ArrayList<UserAction> actions = new ArrayList<>();
                actions.add(new Exit(out));
         new StartUI(out).init(input, tracker, actions);
         assertThat(out.toString(), is(
                 "Menu." + System.lineSeparator()
-                        + "0. Exit" + System.lineSeparator()));
+                        + " Exit" + System.lineSeparator()));
     }
 
     @Test

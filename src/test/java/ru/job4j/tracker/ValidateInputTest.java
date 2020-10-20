@@ -21,8 +21,8 @@ public class ValidateInputTest {
         assertThat(out.toString(), is(
                 String.format(
                         "Menu.%n"
-                                + "Please select key from menu.%n"
-                                + " Exit%n")));
+                                + "Wrong input, you can select: 0 .. 0%n"
+                                + "Menu.%n Exit%n")));
     }
 
     @Test

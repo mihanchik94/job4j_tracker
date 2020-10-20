@@ -12,6 +12,10 @@ public class Item implements Comparable<Item> {
         this.name = name;
     }
 
+    public Item(String name) {
+        this.name = name;
+    }
+
     public int getId() {
         return id;
     }
