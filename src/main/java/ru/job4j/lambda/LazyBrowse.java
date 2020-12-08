@@ -7,7 +7,7 @@ public class LazyBrowse {
     public static void main(String[] args) {
         String[] names = {
                 "Ivan",
-                "Petr"
+                //"Petr"
         };
         Comparator<String> lengthCmp = (left, right) -> {
             System.out.println("execute comparator");
