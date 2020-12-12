@@ -10,9 +10,9 @@ public class PhoneDictionaryTest {
     public void whenFindByName() {
         PhoneDictionary phones = new PhoneDictionary();
         phones.add(
-                new Person("Petr", "Arsentev", "534872", "Bryansk")
+                new Person("Mikhail", "Ponomarev", "534872", "Moscow")
         );
-        ArrayList<Person> persons = phones.find("Petr");
-        assertThat(persons.get(0).getSurname(), is("Arsentev"));
+        ArrayList<Person> persons = phones.find("Mikhail");
+        assertThat(persons.get(0).getSurname(), is("Ponomarev"));
     }
 }
