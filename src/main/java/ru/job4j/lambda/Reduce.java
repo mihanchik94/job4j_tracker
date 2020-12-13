@@ -42,19 +42,19 @@ public class Reduce {
             result *= index;
         }
         return result;*/
-        BiFunction<Integer, Integer, Integer> func = new BinaryOperator<Integer>(){
+        BiFunction<Integer, Integer, Integer> func = new BinaryOperator<Integer>() {
             @Override
             public Integer apply(Integer left, Integer right) {
                 return left * right;
             }
         };
-        Supplier<Integer> initValue= new Supplier<Integer>() {
+        Supplier<Integer> initValue = new Supplier<Integer>() {
             @Override
             public Integer get() {
                 return 1;
             }
         };
-        return loop(to,func, initValue);
+        return loop(to, func, initValue);
     }
 
     public static void main(String[] args) {

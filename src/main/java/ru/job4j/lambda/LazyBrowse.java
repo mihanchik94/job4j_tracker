@@ -13,7 +13,7 @@ public class LazyBrowse {
             System.out.println("execute comparator");
             return left.length() - right.length();
         };
-        Arrays.sort(names,lengthCmp);
+        Arrays.sort(names, lengthCmp);
     }
 }
 
