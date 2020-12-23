@@ -17,10 +17,10 @@ public class ProfilesTest {
         new Profile(new Address("New York", "Street 4", 4, 4))
         );
         List<Address> expected = List.of(
-        new Address("Moscow", "Street 1", 1, 1),
-        new Address("New York", "Street 2", 2, 2),
-        new Address("Novgorod", "Street 3", 3, 3),
-        new Address("New York", "Street 4", 4, 4)
+                new Address("Moscow", "Street 1", 1, 1),
+                new Address("New York", "Street 2", 2, 2),
+                new Address("New York", "Street 4", 4, 4),
+                new Address("Novgorod", "Street 3", 3, 3)
         );
         assertThat(expected, is(new Profiles().collect(profiles)));
         }
