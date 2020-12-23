@@ -23,4 +23,20 @@ public class Students2MapTest {
                 "Васякин", new Student(13, "Васякин"));
         assertThat(result, is(expected));
     }
+
+    @Test
+    public void whenDuplicate() {
+        List<Student> students = List.of(
+                new Student(14, "Денисов"),
+                new Student(17, "Иванов"),
+                new Student(14, "Денисов"),
+                new Student(13, "Васякин"));
+        Map<String, Student> result = Students2Map.convert(students);
+        Map<String, Student> expected = Map.of(
+                "Денисов", new Student(14, "Денисов"),
+                "Иванов", new Student(17, "Иванов"),
+                "Васякин", new Student(13, "Васякин"));
+        assertThat(result, is(expected));
+    }
+
 }
