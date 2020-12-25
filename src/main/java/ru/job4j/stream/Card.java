@@ -31,11 +31,15 @@ public class Card {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Card)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Card)) {
+            return false;
+        }
         Card card = (Card) o;
-        return suit == card.suit &&
-                value == card.value;
+        return suit == card.suit
+                && value == card.value;
     }
 
     @Override
@@ -45,10 +49,12 @@ public class Card {
 
     @Override
     public String toString() {
-        return "Card{" +
-                "suit=" + suit +
-                ", value=" + value +
-                '}';
+        return "Card{"
+                + "suit="
+                + suit
+                + ", value="
+                + value
+                + '}';
     }
 
     public static void main(String[] args) {
