@@ -11,27 +11,25 @@ public class College {
     }
 
     public Student findByAccount(String account) {
-        for (Student s : students.keySet()) {
-            if (s.getAccount().equals(account)) {
-                return s;
-            }
-        }
-        return null;
+        return  students.keySet()
+                .stream()
+                .filter(student -> student.getAccount().equals(account))
+                .findFirst()
+                .orElse(null);
     }
 
     public Subject findBySubjectName(String account, String name) {
         Student a = findByAccount(account);
         if (a != null) {
-            Set<Subject> subjects = students.get(a);
-            for (Subject s : subjects) {
-                if (s.getName().equals(name)) {
-                    return s;
+            return students.get(a)
+                   .stream()
+                   .filter(student -> student.getName().equals(name))
+                   .findFirst()
+                   .orElse(null);
                 }
-
-            }
-        }
         return null;
     }
+
 
     public static void main(String[] args) {
         Map<Student, Set<Subject>> students = Map.of(new Student("Boris", "00001", "201-18-15"),
