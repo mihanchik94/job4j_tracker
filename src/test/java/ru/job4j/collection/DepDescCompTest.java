@@ -42,13 +42,13 @@ public class DepDescCompTest {
 
     @Test
     public  void whenSortDesc() {
-        List<String> input = Arrays.asList(
+        List<String> input = List.of(
                 "K2/SK1/SSK1",
                 "K2/SK1/SSK2",
                 "K1/SK1/SSK2",
                 "K1/SK1/SSK1",
                 "K1/SK2");
-        List<String> expect = Arrays.asList(
+        List<String> expect = List.of(
                 "K2",
                 "K2/SK1",
                 "K2/SK1/SSK1",

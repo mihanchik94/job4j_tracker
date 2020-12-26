@@ -19,8 +19,8 @@ public class ItemSorterTest {
         Item first = new Item(2, "Denis");
         Item second = new Item(1, "Igor");
         Item third = new Item(3, "George");
-        List<Item> items = Arrays.asList(first, second, third);
-        assertThat(sorter.sortUp(items), is(Arrays.asList(second, first, third)));
+        List<Item> items = List.of(first, second, third);
+        assertThat(sorter.sortUp(items), is(List.of(second, first, third)));
 
     }
 
@@ -30,8 +30,8 @@ public class ItemSorterTest {
         Item first = new Item(2, "Denis");
         Item second = new Item(1, "Igor");
         Item third = new Item(3, "George");
-        List<Item> items = Arrays.asList(first, second, third);
-        assertThat(sorter.sortDown(items), is(Arrays.asList(third, first, second)));
+        List<Item> items = List.of(first, second, third);
+        assertThat(sorter.sortDown(items), is(List.of(third, first, second)));
     }
 
     @Test
@@ -40,7 +40,7 @@ public class ItemSorterTest {
         Item first = new Item(2, "Denis");
         Item second = new Item(1, "Igor");
         Item third = new Item(3, "George");
-        List<Item> items = Arrays.asList(first, second, third);
-        assertThat(sorter.sortItemsByName(items), is(Arrays.asList(first, third, second)));
+        List<Item> items = List.of(first, second, third);
+        assertThat(sorter.sortItemsByName(items), is(List.of(first, third, second)));
     }
 }
