@@ -31,33 +31,21 @@ public class BankService {
 
     public Optional<Account> findByRequisite(String passport, String requisite) {
         Optional<User> user = findByPassport(passport);
-        if (user.isPresent()) {
-            return users.get(user.get())
-                    .stream()
-                    .filter(account -> account.getRequisite().equals(requisite))
-                    .findFirst();
-        } else {
-            return Optional.empty();
-        }
+        return user.flatMap(value -> users.get(value)
+                .stream()
+                .filter(account -> account.getRequisite().equals(requisite))
+                .findFirst());
     }
 
     public void transferMoney(String scrPassport, String srcRequisite, String destPassport, String destRequisite, double amount) {
 
         Optional<Account> scr = findByRequisite(scrPassport, srcRequisite);
-        Account scrAccount = null;
-        if (scr.isPresent()) {
-            scrAccount = scr.get();
-        }
-
         Optional<Account> dest = findByRequisite(destPassport, destRequisite);
-        Account destAccount = null;
-        if (dest.isPresent()) {
-            destAccount = dest.get();
-        }
 
-        if (scrAccount != null && destAccount != null && scrAccount.getBalance() >= amount) {
-            scrAccount.setBalance(scrAccount.getBalance() - amount);
-            destAccount.setBalance(destAccount.getBalance() + amount);
+
+        if (scr.isPresent() && dest.isPresent() && scr.get().getBalance() >= amount) {
+            scr.get().setBalance(scr.get().getBalance() - amount);
+            dest.get().setBalance(dest.get().getBalance() + amount);
         }
     }
 
