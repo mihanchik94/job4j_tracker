@@ -51,5 +51,4 @@ public class Analyze {
                 .max(Comparator.comparing(Tuple::getScore))
                 .orElse(null);
     }
-
 }
