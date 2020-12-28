@@ -8,7 +8,7 @@ public class BankService {
 
     public void addUser(User user) {
         //if(!users.containsKey(user)) {
-            //users.put(user, new ArrayList<Account>());}
+            //users.put(user, new ArrayList<Account>());
         users.putIfAbsent(user, new ArrayList<Account>());
     }
 
