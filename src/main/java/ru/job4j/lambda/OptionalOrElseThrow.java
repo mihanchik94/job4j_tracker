@@ -3,10 +3,8 @@ package ru.job4j.lambda;
 
 //Нужно написать метод поиска пользователя по логину. Если ничего не найдено, то нужно вернуть исключение
 
-import org.w3c.dom.ls.LSOutput;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 public class OptionalOrElseThrow {
