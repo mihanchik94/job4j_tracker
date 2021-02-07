@@ -18,17 +18,19 @@ import java.util.stream.Collectors;
  *
  * Дан список пользователей, у каждого пользователя есть счет.
  * Необходимо найти сумму баланса для каждого пользователя.
+ * В программе необходимо использовать вспомогательный метод Pair
  */
 
 
 public class SummingMethod {
     public static Map<String, Integer> summing(List<User> users) {
        return users.stream()
-               .collect(Collectors.groupingBy(
-                       User::getName,
-                       Collectors.summingInt(user -> user.getBills().stream()
-                               .mapToInt(Bill::getBalance).sum()
-                       )));
+               .map(user -> user.getBills().stream()
+               .map(bill -> new Pair(user, bill))
+               .collect(Collectors.toList()))
+               .flatMap(List::stream)
+               .collect(Collectors.groupingBy(pair -> pair.getUser().getName(),
+                Collectors.summingInt(pair -> pair.getBill().getBalance())));
 
     }
 
